@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <queue>
 #include <stdexcept>
 #include <unordered_set>
 #include <vector>
@@ -71,14 +72,34 @@ public:
         
     }
 
-    std::vector<char> Dijkstras (Graph graph, char s) {
+    std::unordered_map<std::vector<char>, int> Dijkstras (Graph graph, char s) {
+
         if (vertices_list.find(s) == vertices_list.end()) {
             throw std::runtime_error("source node doesn't exist in the graph");
         }
-        std::vector<char> final;
-        std::vector<int> distances;
+
+        typedef struct {
+            int distance;
+            bool known;
+            char parent;
+        } vertex_t;
+
+        std::unordered_map<std::vector<char>, int> final;
+        std::unordered_map<char, vertex_t> info_map;
+        std::priority_queue<char> p_queue;
+
+        for (const char & v : vertices_list) {
+            vertex_t new_vertex;
+            new_vertex.distance = 10000000;
+            new_vertex.known = false;
+            new_vertex.parent = '\0';
+
+            info_map[v] = new_vertex;
+
+        }
         
         
+       return final; 
     }
 
 };
