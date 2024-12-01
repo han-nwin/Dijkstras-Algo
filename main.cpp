@@ -77,7 +77,7 @@ public:
         }
         std::vector<char> final;
         std::vector<int> distances;
-
+        
         
     }
 
